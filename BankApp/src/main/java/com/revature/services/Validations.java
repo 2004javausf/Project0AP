@@ -21,6 +21,14 @@ public class Validations {
 			
 	}
 	
+	public boolean validateAmount(double amount) {
+		if(amount<0) {
+			System.out.println("Transaction of any negative amount is not allowed");
+			return false;
+		}
+		return true;
+	}
+	
 	public boolean validateDouble(String s) {
 		try {
 			Double.parseDouble(s);
@@ -82,12 +90,21 @@ public class Validations {
         	System.out.println("There is no email");
             return false; 
         }
-        System.out.println(pat.matcher(email).matches());
         return pat.matcher(email).matches(); 
     } 
 	
 	public boolean validateGender(String s) {
 		if((s.equalsIgnoreCase("M")) || (s.equalsIgnoreCase("F"))){
+			return true;
+		}
+		else {
+			System.out.println("Invalid Input. Try Again");
+			return false;
+		}
+	}
+	
+	public boolean validateAccountType(String s) {
+		if((s.equalsIgnoreCase("C")) || (s.equalsIgnoreCase("S"))){
 			return true;
 		}
 		else {
@@ -110,6 +127,33 @@ public class Validations {
 		}
 		
 	}
+	
+	
+	public boolean validatePassword(String password) {
+		/* Valid Passwords
+		 * Between 8 and 40 characters long.
+		 * Contain at least one digit.
+		 * Contain at least one lower case character.
+		 * Contain at least one upper case character.
+		 * Contain at least one special character from [ @ # $ % ! . ].
+		 */
+
+		final String COMPLEX_PASSWORD_REGEX = "((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,40})";
+				
+
+		final Pattern PASSWORD_PATTERN = Pattern.compile(COMPLEX_PASSWORD_REGEX);
+		//String password = "Stream@Java8";
+
+		// Validate an password
+		if (PASSWORD_PATTERN.matcher(password).matches()) {
+			return true;
+		}
+		else {
+			System.out.print("Invalid Password. Try Again!");
+			return false;
+		}
+	}
+	
 	
 
 	

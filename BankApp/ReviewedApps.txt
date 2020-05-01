@@ -1,0 +1,7 @@
+¨Ì sr java.util.ArrayListxÅ“ô«aù I sizexp   w   sr com.revature.beans.CustomerﬂotÜªÕ J 
+customerID[ 	accountIDt [JL addresst Ljava/lang/String;L atypeq ~ L dobq ~ L emailq ~ L 	firstNameq ~ L genderq ~ L lastNameq ~ L passWordq ~ L phoneNumbert Ljava/lang/CharSequence;L statusq ~ L userNameq ~ xp       ur [Jx µ±uì  xp   
+                                                                               t !35 Cedar Street Brooklyn NY 11221t  t 
+05/12/2005t nabil.abid2005@gmail.comt Nabilt Mt Abidt 
+Nabil@2005t 
+9173481235t Activet nabilsq ~         uq ~    
+ 

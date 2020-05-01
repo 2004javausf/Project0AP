@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.beans.Accounts;
 import com.revature.beans.Customer;
 import com.revature.beans.Employee;
 
@@ -33,8 +34,6 @@ public class FileAccess {
 				e.printStackTrace();
 			} 
 		}
-		
-		
 		@SuppressWarnings("unchecked")
 		public void readEmpFile() {
 			//InputStream fileIs = null;
@@ -57,7 +56,7 @@ public class FileAccess {
 		}
 		
 		
-		public static final String custFile = "AccountInfo.txt";
+		public static final String custFile = "CustomerInfo.txt";
 		public static List<Customer> custList = new ArrayList<Customer>();
 
 		public void writeCustFile(List<Customer> cList) {
@@ -84,6 +83,46 @@ public class FileAccess {
 				this.custList.clear();
 				ObjectInputStream objIs = new ObjectInputStream(new FileInputStream(custFile));
 				this.custList.addAll((Collection<? extends Customer>) objIs.readObject());
+				objIs.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
+		
+		public static final String acctFile = "AccountInfo.txt";
+		public static List<Accounts> acctList = new ArrayList<Accounts>();
+
+		public void writeAcctFile(List<Accounts> aList) {
+			OutputStream ops;
+			ObjectOutputStream objOps;
+
+			try {
+				ops = new FileOutputStream(acctFile);
+				objOps = new ObjectOutputStream(ops);
+				objOps.writeObject(aList);
+				objOps.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+		}
+		
+		@SuppressWarnings("unchecked")
+		public void readAcctFile() {
+			//InputStream fileIs = null;
+			//ObjectInputStream objIs = null;
+			try {
+				this.acctList.clear();
+				ObjectInputStream objIs = new ObjectInputStream(new FileInputStream(acctFile));
+				this.acctList.addAll((Collection<? extends Accounts>) objIs.readObject());
 				objIs.close();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -138,36 +177,42 @@ public class FileAccess {
 			} 
 		}
 		
-		
-//		public static void main(String[] args) {
-//			Scanner in = new Scanner(System.in);
-//			Scanner st = new Scanner(System.in);
-//			Employee e = new Employee();
-//			Employee e2 = new Employee();
-//			MyObjectFileStore mof = new MyObjectFileStore();
-//			mof.displayObject();
-//			int l,id;
-//			System.out.println("Enter your name: ");
-//			e2.setName(st.nextLine());
-//			//System.out.println("Enter your ID: ");
-//			//e2.setId(in.nextInt());
-//			l=mof.empList.size();
-//			e = mof.empList.get(l-1);
-//			e2.setId((e.getId()+1));
-//			System.out.println("What is your Salary: ");
-//			e2.setSalary(st.nextLine());		
-//			
-////			Employee e1 = new Employee("Abid", 1, "60000");
-////			mof.empList.add(e1);
-////			mof.storeObject();
-//			mof.empList.add(e2);
-//			mof.storeObject(mof.empList);
-//			mof.displayObject();
-//			
-//			for (Employee i : mof.empList) {
-//				System.out.println(i);
-//				}
-//			//System.out.println(mof.empList);
-//		}
-	}
+		public static final String revFile = "ReviewedApps.txt";
+		public static List<Customer> revList = new ArrayList<Customer>();
 
+		public void writeRevFile(List<Customer> rList) {
+			OutputStream ops;
+			ObjectOutputStream objOps;
+
+			try {
+				ops = new FileOutputStream(revFile);
+				objOps = new ObjectOutputStream(ops);
+				objOps.writeObject(rList);
+				objOps.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+		}
+		@SuppressWarnings("unchecked")
+		public void readRevFile() {
+			//InputStream fileIs = null;
+			//ObjectInputStream objIs = null;
+			try {
+				this.revList.clear();
+				ObjectInputStream objIs = new ObjectInputStream(new FileInputStream(revFile));
+				this.revList.addAll((Collection<? extends Customer>) objIs.readObject());
+				objIs.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
+}
